@@ -6,7 +6,14 @@ public abstract class User {
     private String password;
     public String instapay_handle;
 
-    public void signIn(String username,String password){
+    public User(String phone_number, String username, String password, String instapay_handle) {
+        this.phone_number = phone_number;
+        this.username = username;
+        this.password = password;
+        this.instapay_handle = instapay_handle;
+    }
+
+    public void signIn(String username, String password){
 
 
     }
