@@ -1,12 +1,10 @@
 package instapay.user;
 
-import java.util.HashMap;
-
 public abstract class User {
     public String phone_number;
     private String username;
     private String password;
-    public String instapay_account;
+    public String instapay_handle;
 
     public void signIn(String username,String password){
 
@@ -21,8 +19,8 @@ public abstract class User {
     protected String getPhoneNumber(){
         return phone_number;
     }
-    protected String getInstapayAcc(){
-        return instapay_account;
+    protected String getInstapayHandle(){
+        return instapay_handle;
     }
 
 }
