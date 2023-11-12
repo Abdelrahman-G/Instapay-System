@@ -82,13 +82,11 @@ public class UserVerification {
     }
 
     public void sendOtp(String phone_number){
-        /*
-
-
-        send and receive OTP
-
-
-        */
-        System.err.println("i'm the otp, i haven't been implemented yet😭");
+        OTP otp = new OTP();
+        try {
+            otp.sendOTP(phone_number);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
