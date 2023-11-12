@@ -1,4 +1,4 @@
-import instapay.user.UserVerification;
+import instapay.user.verification.UserVerification;
 import instapay.user.UsersDatabase;
 
 import java.io.IOException;

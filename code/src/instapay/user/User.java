@@ -1,19 +1,17 @@
 package instapay.user;
 
+import instapay.account.Account;
+
 public abstract class User {
-    public String phone_number;
-    private String username;
-    private String password;
-    public String instapay_handle;
+    protected String mobileNumber;
+    protected String username;
+    protected String password;
+    protected String instapay_handle;
+    protected Account account;
+    protected UserTransaction userTransact;
 
-    public User(String phone_number, String username, String password, String instapay_handle) {
-        this.phone_number = phone_number;
-        this.username = username;
-        this.password = password;
-        this.instapay_handle = instapay_handle;
-    }
-
-    public void signIn(String username, String password){
+    public void login(String username, String password){
+        //to be implemented
 
 
     }
@@ -24,7 +22,7 @@ public abstract class User {
         return password;
     }
     protected String getPhoneNumber(){
-        return phone_number;
+        return mobileNumber;
     }
     protected String getInstapayHandle(){
         return instapay_handle;

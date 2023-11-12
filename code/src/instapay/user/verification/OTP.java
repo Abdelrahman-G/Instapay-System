@@ -1,4 +1,4 @@
-package instapay.user;
+package instapay.user.verification;
 import java.net.*;
 import java.util.Base64;
 import java.io.*;
