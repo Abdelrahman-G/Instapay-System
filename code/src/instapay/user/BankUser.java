@@ -1,6 +1,8 @@
 package instapay.user;
 
-public class BankUser extends User{
+import instapay.User;
+
+public class BankUser extends User {
 
     public BankUser(String phone_number, String username, String password, String instapay_handle) {
         this.mobileNumber = phone_number;

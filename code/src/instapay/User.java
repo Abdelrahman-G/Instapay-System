@@ -1,5 +1,6 @@
-package instapay.user;
+package instapay;
 
+import instapay.UserTransaction;
 import instapay.account.Account;
 
 public abstract class User {

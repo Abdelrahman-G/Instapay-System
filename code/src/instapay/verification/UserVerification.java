@@ -1,7 +1,6 @@
-package instapay.user.verification;
+package instapay.verification;
 
-import instapay.user.UsersDatabase;
-import instapay.user.verification.OTP;
+import instapay.UsersDatabase;
 
 import java.util.Scanner;
 

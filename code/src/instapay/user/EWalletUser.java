@@ -1,6 +1,8 @@
 package instapay.user;
 
-public class EWalletUser extends User{
+import instapay.User;
+
+public class EWalletUser extends User {
 
     public EWalletUser(String phone_number, String username, String password, String instapay_handle) {
         this.mobileNumber = phone_number;

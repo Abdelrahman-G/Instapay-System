@@ -1,4 +1,5 @@
-package instapay.user;
+package instapay;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
