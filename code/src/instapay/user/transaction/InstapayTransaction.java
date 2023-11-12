@@ -1,6 +1,8 @@
 package instapay.user.transaction;
 
-public class InstapayTransaction {
+import instapay.user.UserTransaction;
+
+public class InstapayTransaction extends UserTransaction {
 
     public void transferMoney(){
         //to be implemented
