@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
     }
 
     public void createUser(){
@@ -21,12 +20,8 @@ public class Main {
         username = verification.confirmUsername(database);
         password =verification.confirmPassword();
         phone_number = verification.confirmPhone(database);
-        verification.sendOtp(phone_number);
+        verification.verifyOTP(phone_number);
         instapayHandle = verification.confirmHandle(database);
-
-        //will add when the implementaion of child classes is complete
-
-//        User user = new User(username,password,email,instapayHandle);
 
     }
 }

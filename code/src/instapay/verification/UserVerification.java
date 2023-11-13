@@ -2,6 +2,7 @@ package instapay.verification;
 
 import instapay.UsersDatabase;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class UserVerification {
@@ -81,12 +82,25 @@ public class UserVerification {
         }
     }
 
-    public void sendOtp(String phone_number){
-        OTP otp = new OTP();
-        try {
-            otp.sendOTP(phone_number);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public boolean verifyOTP(String phoneNumber){
+        Random random = new Random();
+        int max = 999999,min = 100000;
+        int otp = random.nextInt(max - min) + min;
+        System.out.println(otp);
+        System.out.println("Code has been sent successfully to your phone number!");
+        System.out.println("Enter the code: ");
+        Scanner input = new Scanner(System.in);
+        int in = input.nextInt();
+
+        while (in != otp){
+            System.out.println("Code isn't right! a new verification code has been sent to your device.");
+            otp = random.nextInt(max - min) + min;
+            System.out.println(otp);
+            System.out.println("Enter the code: ");
+            in = input.nextInt();
         }
+        System.out.println("Account verified successfully! :)");
+
+        return true;
     }
 }
