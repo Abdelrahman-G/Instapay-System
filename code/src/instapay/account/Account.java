@@ -2,7 +2,7 @@ package instapay.account;
 
 import java.math.BigInteger;
 
-public class Account {
+public abstract class Account {
     protected double balance;
-    protected BigInteger phoneNumber;
+    protected String phoneNumber;
 }

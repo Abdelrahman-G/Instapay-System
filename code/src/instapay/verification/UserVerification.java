@@ -1,6 +1,6 @@
 package instapay.verification;
 
-import instapay.UsersDatabase;
+import instapay.user.UsersDatabase;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -9,10 +9,10 @@ public class UserVerification {
     private String username;
     private String password;
     private String phone_number;
-    private String email;
     private String instapayHandle;
 
     public String confirmUsername(UsersDatabase database){
+
         while(true) {
             System.out.println("please enter user name\n");
             System.out.println("NOTE: This username must be unique, username is permanent and can't be Changed\n");
@@ -29,7 +29,7 @@ public class UserVerification {
     }
     public String confirmPassword(){
         //        regex for a strong password with min length 8 and max length 20 that strong password criteria
-        String password_regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$";
+        String password_regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-_+=()])(?=\\S+$).{8,20}$";
         while(true) {
             System.out.println("please enter password\n");
             System.out.println("NOTE: Password must be at least 8 characters and strong (contains at least: 1 lowercase letter, 1 uppercase letter,1 number and 1 symbol)\n");
@@ -103,4 +103,6 @@ public class UserVerification {
 
         return true;
     }
+
+
 }

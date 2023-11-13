@@ -1,4 +1,4 @@
-package instapay;
+package instapay.transaction;
 
 public abstract class UserTransaction {
     protected String identifier;

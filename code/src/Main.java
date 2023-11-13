@@ -1,27 +1,20 @@
+import instapay.verification.AuthService;
 import instapay.verification.UserVerification;
-import instapay.UsersDatabase;
+import instapay.user.UsersDatabase;
 
 import java.io.IOException;
 import java.util.Scanner;
+import instapay.account.wallet.EPayWallet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+        AuthService authentication = new AuthService();
+        int a = 2;
+        while (a>0) {
+            authentication.createUser();
+            a--;
+        }
     }
 
-    public void createUser(){
-        UsersDatabase database = new UsersDatabase();
-        String username, password, phone_number, email,instapayHandle;
-        Scanner input = new Scanner(System.in);
 
-
-        //the process of verifying each user attribute
-        UserVerification verification = new UserVerification();
-        username = verification.confirmUsername(database);
-        password =verification.confirmPassword();
-        phone_number = verification.confirmPhone(database);
-        verification.verifyOTP(phone_number);
-        instapayHandle = verification.confirmHandle(database);
-
-    }
 }
