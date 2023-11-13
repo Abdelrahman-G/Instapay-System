@@ -1,5 +1,5 @@
 package instapay.account;
 
-public abstract class WalletAccount {
+public abstract class WalletAccount extends Account{
 
 }

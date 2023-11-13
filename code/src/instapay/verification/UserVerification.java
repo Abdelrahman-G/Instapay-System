@@ -5,7 +5,7 @@ import instapay.user.UsersDatabase;
 import java.util.Random;
 import java.util.Scanner;
 
-public class UserVerification {
+public abstract class UserVerification {
     private String username;
     private String password;
     private String phone_number;
@@ -103,6 +103,7 @@ public class UserVerification {
 
         return true;
     }
-
-
+    public abstract String validateSerial();
 }
+
+
