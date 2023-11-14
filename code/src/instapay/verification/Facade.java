@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AuthService {
+public class Facade {
     UsersDatabase database = new UsersDatabase();
 
     public Map.Entry<Integer,UserVerification> accountChoice() {
@@ -41,7 +41,7 @@ public class AuthService {
     public void createUser() throws IOException {
 
         String username, password, phone_number, email, instapayHandle;
-        AuthService authService = new AuthService();
+        Facade authService = new Facade();
         Map.Entry<Integer,UserVerification> entry = authService.accountChoice();
         UserVerification verification = entry.getValue();
         int choice = entry.getKey();
