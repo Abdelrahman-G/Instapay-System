@@ -2,8 +2,6 @@ package instapay.verification;
 
 import instapay.account.Account;
 import instapay.account.BankAccount;
-import instapay.user.BankUser;
-import instapay.user.EWalletUser;
 import instapay.user.User;
 import instapay.user.UsersDatabase;
 

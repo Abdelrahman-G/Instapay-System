@@ -30,6 +30,7 @@ public class AuthService {
                 return entry;
             }
             case 2 -> {
+                verification = new EWalletUserVerification();
                 Map.Entry<Integer, UserVerification> entry = Map.entry(choice, verification);
                 return entry;
             }
