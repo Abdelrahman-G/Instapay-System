@@ -1,5 +1,10 @@
 package instapay.verification;
 
+import instapay.account.Account;
+import instapay.account.BankAccount;
+import instapay.user.BankUser;
+import instapay.user.EWalletUser;
+import instapay.user.User;
 import instapay.user.UsersDatabase;
 
 import java.util.Random;
@@ -12,17 +17,16 @@ public abstract class UserVerification {
     private String instapayHandle;
 
     public String confirmUsername(UsersDatabase database){
-
         while(true) {
-            System.out.println("please enter user name\n");
+            System.out.println("please enter your username:");
             System.out.println("NOTE: This username must be unique, username is permanent and can't be Changed\n");
             Scanner input = new Scanner(System.in);
             username = input.nextLine();
             if (database.searchUsername(username)){
-                System.out.println("This username is already taken\n");
+                System.out.println("This username is already taken");
             }
             else {
-                System.out.println("This username is valid\n");
+                System.out.println("This username is valid :)");
                 return username;
             }
         }
@@ -104,6 +108,28 @@ public abstract class UserVerification {
         return true;
     }
     public abstract String validateSerial();
+
+    public User makeUserType(int choice){
+        User user = null;
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Enter Bank Account Number: ");
+                String bankAccountNumber = this.validateSerial();
+                Account account = new BankAccount(bankAccountNumber);
+                user = new BankUser(phone_number, username, password, instapayHandle);
+            }
+            // bank account verification
+            // check with api
+            case 2 -> {
+                System.out.println("Enter EWallet Number: ");
+                String EWallet = this.validateSerial();
+                user = new EWalletUser(phone_number, username, password, instapayHandle);
+            }
+            // ewallet verification
+            //check with api
+        }
+        return user;
+    }
 }
 
 
