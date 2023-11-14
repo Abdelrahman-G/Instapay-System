@@ -1,7 +1,8 @@
 package instapay.user;
 
+import instapay.Account.InstapayAccount;
 import instapay.transaction.UserTransaction;
-import instapay.account.Account;
+import instapay.Account.InstapayAccount;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -12,15 +13,15 @@ public  class User {
     protected String username;
     protected String password;
     protected String instaPayHandle;
-    protected Account account;
+    protected InstapayAccount account;
     protected UserTransaction userTransact;
 
-    public User(String mobileNumber, String username, String password, String instapay_handle) {
+    public User(String mobileNumber, String username, String password, String instapay_handle ,InstapayAccount account) {
+        this.account = account;
         this.mobileNumber = mobileNumber;
         this.username = username;
         this.password = password;
         this.instaPayHandle = instapay_handle;
-//        this.account.add(account);
 //        this.userTransact = userTransact;
     }
 

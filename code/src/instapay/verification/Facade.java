@@ -12,13 +12,13 @@ public class Facade {
 
     public Map.Entry<Integer,UserVerification> accountChoice() {
         Scanner input = new Scanner(System.in);
-        System.out.println("1.Add Bank Account\n2.Add EWallet");
+        System.out.println("1.Add Bank instapay.Account\n2.Add EWallet");
         int choice = input.nextInt();
 
 
         while (choice != 1 && choice != 2) {
             System.out.println("Invalid Choice!!");
-            System.out.println("1.Add Bank Account\n2.Add EWallet");
+            System.out.println("1.Add Bank instapay.Account\n2.Add EWallet");
             choice = input.nextInt();
 
         }
