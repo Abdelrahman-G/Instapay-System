@@ -67,10 +67,10 @@ public class ProgramInterface {
             switch (choice){
                 case 1:
                     if (Objects.equals(activeUser.getAccountType(), "Bank")){
-                        bankAccountTransfer();
+                        bankAccountTransferMenu();
                     }
                     else if(activeUser.getAccountType() == "Wallet"){
-                        walletTransfer();
+                        walletTransferMenu();
                     }
                     break;
                 case 2:
@@ -80,7 +80,7 @@ public class ProgramInterface {
         }
     }
 
-    public void bankAccountTransfer(){
+    public void bankAccountTransferMenu(){
         Scanner transferType = new Scanner(System.in);
         System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet:");
         int choice = transferType.nextInt();
@@ -131,7 +131,7 @@ public class ProgramInterface {
         }
     }
 
-    public void walletTransfer(){
+    public void walletTransferMenu(){
         Scanner transferType = new Scanner(System.in);
         System.out.println("1.Transfer to instapay account\n2.Transfer to Wallet");
         int choice = transferType.nextInt();
