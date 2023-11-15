@@ -1,4 +1,5 @@
 package instapay.Account;
+
 import instapay.Bank.Bank;
 
 import java.util.Scanner;
@@ -6,6 +7,11 @@ import java.util.Scanner;
 public class BankAccount extends InstapayAccount {
     private Bank bank;
     private Scanner input = new Scanner(System.in);
+
+    public BankAccount(String phoneNumber, String handle) {
+        super(phoneNumber, handle);
+    }
+
     public double inquireBalance(){
         System.out.println("Enter your serial number: ");
         String serial = input.nextLine();
