@@ -1,6 +1,7 @@
 package instapay.verification;
 
 import instapay.Account.*;
+import instapay.Bank.*;
 import instapay.user.User;
 import instapay.user.UserDatabase;
 
@@ -108,7 +109,7 @@ public abstract class UserVerification {
             case 1 -> {
                 System.out.println("Enter Bank instapay.Account Number: ");
                 String bankAccountNumber = this.validateSerial();
-                InstapayAccount account = new BankAccount();
+                InstapayAccount account = null;
                 Bank bank = null;
                 while (true) {
                     System.out.println("Choose your bank: ");
@@ -142,7 +143,6 @@ public abstract class UserVerification {
                 System.out.println("Enter EWallet Number: ");
                 String EWallet = this.validateSerial();
             }
-            user = new User(phone_number, username, password, instapayHandle);
             // ewallet verification
                 WalletProvider wallet = null;
                 while (true) {
