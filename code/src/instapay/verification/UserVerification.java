@@ -144,7 +144,7 @@ public class UserVerification {
                     System.out.println("Enter Bank Account Number: ");
                     serial = input.nextLine();
                 }
-                account = new BankAccount(phoneNumber, instapayHandle);
+                account = new BankAccount(phoneNumber, instapayHandle, serial, bank);
             }
             // bank account verification
             // check with api
@@ -176,7 +176,7 @@ public class UserVerification {
                 System.out.println("This phone number will receive an OTP");
                 //send OTP
                 this.verifyOTP(phoneNumber);
-                account = new WalletAccount(phoneNumber, instapayHandle);
+                account = new WalletAccount(phoneNumber, instapayHandle, wallet);
                 break;
             }
             // Ewallet verification

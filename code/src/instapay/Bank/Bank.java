@@ -8,4 +8,15 @@ public abstract class Bank {
     public String getSerial() {
         return "7855111234432232";
     }
+    public boolean deductBalance(String phoneNumber,double amount){
+        return true;
+    }
+
+    public void addBalance(double amount) {
+        return;
+    }
+
+    public boolean accountExists(String accountNumber) {
+        return true;
+    }
 }

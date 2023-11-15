@@ -55,12 +55,12 @@ public  class User {
         System.out.println(this.username+" "+this.password+" "+this.mobileNumber+" "+this.instaPayHandle +"@instapay\n");
     }
 
-    public boolean transferMoney(int transactionType){
-        return this.account.transferMoney();
-    }
 
     public void payBill(){
         this.account.payBill();
     }
 
+    public String getAccountType(){
+        return this.account.getAccountType();
+    }
 }

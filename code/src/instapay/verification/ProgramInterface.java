@@ -4,6 +4,7 @@ import instapay.user.User;
 import instapay.user.UserDatabase;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ProgramInterface {
@@ -11,10 +12,12 @@ public class ProgramInterface {
     private User activeUser = null;
 
 
+
     public void initiateProg() throws IOException {
         while (true){
             this.register();
             this.login();
+            this.chooseOperation();
         }
     }
     private void register() throws IOException {
@@ -55,21 +58,114 @@ public class ProgramInterface {
         }
     }
 
-
-
     private void chooseOperation(){
         Scanner input = new Scanner(System.in);
         while(true) {
             System.out.println("1.Transfer money\n2.Inquire balance\n3.bill payment");
             int choice = input.nextInt();
+
             switch (choice){
                 case 1:
-                    activeUser.transferMoney();
+                    if (Objects.equals(activeUser.getAccountType(), "Bank")){
+                        bankAccountTransfer();
+                    }
+                    else if(activeUser.getAccountType() == "Wallet"){
+                        walletTransfer();
+                    }
+                    break;
+//                case 2:
+//                    System.out.println("Your balance is: " + activeUser.getAccount().getBalance());
+//                    break;
             }
         }
-
-
     }
 
+    public void bankAccountTransfer(){
+        Scanner transferType = new Scanner(System.in);
+        System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet:");
+        int choice = transferType.nextInt();
+        switch (choice){
+            case 1:
+                System.out.println("Enter the instapay handle of the account you want to transfer to: ");
+                Scanner instapayHandle = new Scanner(System.in);
+                String handle = instapayHandle.nextLine();
+                System.out.println("Enter the amount you want to transfer: ");
+                Scanner amount = new Scanner(System.in);
+                double transferAmount = amount.nextDouble();
+                if(activeUser.getAccount().transferMoney("Instapay",transferAmount,handle, database)){
+                    System.out.println("Transfer successful");
+                }
+                else {
+                    System.out.println("Transfer failed");
+                }
+                break;
+            case 2:
+                System.out.println("Enter the bank account number you want to transfer to: ");
+                Scanner bankAccountNumber = new Scanner(System.in);
+                String accountNumber = bankAccountNumber.nextLine();
+                System.out.println("Enter the amount you want to transfer: ");
+                Scanner amount2 = new Scanner(System.in);
+                double transferAmount2 = amount2.nextDouble();
+                if(activeUser.getAccount().transferMoney("Bank",transferAmount2,accountNumber, database)){
+                    System.out.println("Transfer successful");
+                }
+                else {
+                    System.out.println("Transfer failed");
+                };
+                break;
+            case 3:
+                System.out.println("Enter the phone number you want to transfer to: ");
+                Scanner phoneNumber = new Scanner(System.in);
+                String phoneNum = phoneNumber.nextLine();
+                System.out.println("Enter the amount you want to transfer: ");
+                Scanner amount3 = new Scanner(System.in);
+                double transferAmount3 = amount3.nextDouble();
+                if(activeUser.getAccount().transferMoney("Wallet",transferAmount3,phoneNum, database)){
+                    System.out.println("Transfer successful");
+                }
+                else {
+                    System.out.println("Transfer failed");
+                };
+                break;
+
+        }
+    }
+
+    public void walletTransfer(){
+        Scanner transferType = new Scanner(System.in);
+        System.out.println("1.Transfer to instapay account\n2.Transfer to Wallet");
+        int choice = transferType.nextInt();
+        switch (choice){
+            case 1:
+                System.out.println("Enter the instapay handle of the account you want to transfer to: ");
+                Scanner instapayHandle = new Scanner(System.in);
+                String handle = instapayHandle.nextLine();
+                System.out.println("Enter the amount you want to transfer: ");
+                Scanner amount = new Scanner(System.in);
+                double transferAmount = amount.nextDouble();
+                if(activeUser.getAccount().transferMoney("Instapay",transferAmount,handle, database)){
+                    System.out.println("Transfer successful");
+                }
+                else {
+                    System.out.println("Transfer failed");
+                }
+                break;
+            case 2:
+                System.out.println("Enter the phone number you want to transfer to: ");
+                Scanner phoneNumber = new Scanner(System.in);
+                String phoneNum = phoneNumber.nextLine();
+                System.out.println("Enter the amount you want to transfer: ");
+                Scanner amount3 = new Scanner(System.in);
+                double transferAmount3 = amount3.nextDouble();
+                if(activeUser.getAccount().transferMoney("Wallet",transferAmount3,phoneNum, database)){
+                    System.out.println("Transfer successful");
+                }
+                else {
+                    System.out.println("Transfer failed");
+                };
+                break;
+
+        }
+    }
 
 }

@@ -60,12 +60,7 @@ public class UserDatabase {
      *   return true if it exists in the database.
      */
     public boolean searchPhoneNumber(String number){
-//        for(Map.Entry<String ,ArrayList<String>> entry: users_list.entrySet()){
-//            ArrayList<String> tmp = entry.getValue();
-//            if (Objects.equals(tmp.get(3), number))
-//                return true;
-//        }
-//        return false;
+
         for (User user: users_array_list) {
             if (user.getPhoneNumber().equals(number))
                 return true;
@@ -78,12 +73,7 @@ public class UserDatabase {
      *   return true if it exists in the database.
      */
     public boolean searchHandle(String handle){
-//        for(Map.Entry<String ,ArrayList<String>> entry: users_list.entrySet()){
-//            ArrayList<String> tmp = entry.getValue();
-//            if (Objects.equals(tmp.get(2), handle))
-//                return true;
-//        }
-//        return false;
+
         for (User user: users_array_list) {
             if (user.getInstapayHandle().equals(handle))
                 return true;
