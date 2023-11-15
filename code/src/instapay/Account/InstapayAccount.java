@@ -5,26 +5,22 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-import instapay.transaction.*;
-import instapay.wallet.CIBWallet;
-import instapay.wallet.Fawry;
-import instapay.wallet.VodafoneCash;
-import instapay.wallet.WalletProvider;
+import instapay.wallet.*;
+
 
 public abstract class InstapayAccount {
     protected String phoneNumber;
-  //  protected UserDatabase database;
     protected String handle;
     public InstapayAccount(String phoneNumber,String handle){
         this.phoneNumber = phoneNumber;
         this.handle = handle;
-
     }
 
+    /*return random balance value until real API is implemented*/
     public abstract double inquireBalance(String credentials);
     public abstract void payBill();
 
-
+    public abstract String getCredentials();
 
     public boolean transferToInstapay(String instapayHandle, double amount, UserDatabase database){
         ArrayList<User> users = database.getUsers_array_list();

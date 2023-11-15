@@ -7,7 +7,7 @@ public abstract class WalletProvider {
     public double getBalance(String phoneNumber){
         int min = 100000, max = 999999;
         Random random = new Random();
-        return random.nextDouble(max - 100000) - min;
+        return random.nextDouble(max - 100000) + min;
     }
     public boolean deductBalance(String phoneNumber,double amount){
         return true;

@@ -45,6 +45,8 @@ public class WalletAccount extends InstapayAccount {
     }
 
 
-
+    public String getCredentials(){
+        return phoneNumber;
+    }
 
 }

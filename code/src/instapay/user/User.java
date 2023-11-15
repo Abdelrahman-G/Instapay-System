@@ -1,7 +1,8 @@
 package instapay.user;
 
 import instapay.Account.InstapayAccount;
-import instapay.transaction.UserTransaction;
+
+import java.util.Objects;
 
 
 public  class User {
@@ -10,7 +11,6 @@ public  class User {
     protected String password;
     protected String instaPayHandle;
     protected InstapayAccount account;
-    protected UserTransaction userTransact;
 
     public String getMobileNumber() {
         return mobileNumber;
@@ -24,17 +24,12 @@ public  class User {
         return account;
     }
 
-    public UserTransaction getUserTransact() {
-        return userTransact;
-    }
-
     public User(String mobileNumber, String username, String password, String instapay_handle , InstapayAccount account) {
         this.account = account;
         this.mobileNumber = mobileNumber;
         this.username = username;
         this.password = password;
         this.instaPayHandle = instapay_handle;
-//        this.userTransact = userTransact;
     }
 
     protected String getUsername(){
@@ -62,5 +57,13 @@ public  class User {
 
     public String getAccountType(){
         return this.account.getAccountType();
+    }
+
+    public boolean transferMoney(String transferType , double amount, String credentials,UserDatabase database){
+        return this.account.transferMoney( transferType ,  amount,  credentials, database);
+    }
+
+    public double inquireBalance(){
+            return this.account.inquireBalance(account.getCredentials());
     }
 }

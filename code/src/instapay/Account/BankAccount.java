@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BankAccount extends InstapayAccount {
+
     private Bank bank;
     private String accountNumber;
     private Scanner input = new Scanner(System.in);
@@ -19,14 +20,19 @@ public class BankAccount extends InstapayAccount {
     public BankAccount(String phoneNumber, String handle,String serial ,Bank bank) {
         super(phoneNumber, handle);
         this.bank = bank;
+        this.accountNumber = serial;
     }
-
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    public Bank getBank() {
+        return bank;
+    }
     @Override
     public double inquireBalance(String credentials) {
         int min = 100000, max = 999999;
         Random random = new Random();
-        double balance = random.nextDouble(max - 100000) - min;
-        return balance;
+        return random.nextDouble(max - 100000) + min;
     }
 
 
@@ -75,5 +81,9 @@ public class BankAccount extends InstapayAccount {
 
     public String getAccountType(){
         return "Bank";
+    }
+
+    public  String getCredentials(){
+        return bank.getSerial();
     }
 }

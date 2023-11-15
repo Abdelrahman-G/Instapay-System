@@ -73,9 +73,9 @@ public class ProgramInterface {
                         walletTransfer();
                     }
                     break;
-//                case 2:
-//                    System.out.println("Your balance is: " + activeUser.getAccount().getBalance());
-//                    break;
+                case 2:
+                    System.out.println("Your balance is: " + activeUser.inquireBalance());
+                    break;
             }
         }
     }
@@ -92,7 +92,7 @@ public class ProgramInterface {
                 System.out.println("Enter the amount you want to transfer: ");
                 Scanner amount = new Scanner(System.in);
                 double transferAmount = amount.nextDouble();
-                if(activeUser.getAccount().transferMoney("Instapay",transferAmount,handle, database)){
+                if(activeUser.transferMoney("Instapay",transferAmount,handle, database)){
                     System.out.println("Transfer successful");
                 }
                 else {
@@ -106,7 +106,7 @@ public class ProgramInterface {
                 System.out.println("Enter the amount you want to transfer: ");
                 Scanner amount2 = new Scanner(System.in);
                 double transferAmount2 = amount2.nextDouble();
-                if(activeUser.getAccount().transferMoney("Bank",transferAmount2,accountNumber, database)){
+                if(activeUser.transferMoney("Bank",transferAmount2,accountNumber, database)){
                     System.out.println("Transfer successful");
                 }
                 else {
@@ -120,7 +120,7 @@ public class ProgramInterface {
                 System.out.println("Enter the amount you want to transfer: ");
                 Scanner amount3 = new Scanner(System.in);
                 double transferAmount3 = amount3.nextDouble();
-                if(activeUser.getAccount().transferMoney("Wallet",transferAmount3,phoneNum, database)){
+                if(activeUser.transferMoney("Wallet",transferAmount3,phoneNum, database)){
                     System.out.println("Transfer successful");
                 }
                 else {
@@ -143,7 +143,7 @@ public class ProgramInterface {
                 System.out.println("Enter the amount you want to transfer: ");
                 Scanner amount = new Scanner(System.in);
                 double transferAmount = amount.nextDouble();
-                if(activeUser.getAccount().transferMoney("Instapay",transferAmount,handle, database)){
+                if(activeUser.transferMoney("Instapay",transferAmount,handle, database)){
                     System.out.println("Transfer successful");
                 }
                 else {
@@ -157,7 +157,7 @@ public class ProgramInterface {
                 System.out.println("Enter the amount you want to transfer: ");
                 Scanner amount3 = new Scanner(System.in);
                 double transferAmount3 = amount3.nextDouble();
-                if(activeUser.getAccount().transferMoney("Wallet",transferAmount3,phoneNum, database)){
+                if(activeUser.transferMoney("Wallet",transferAmount3,phoneNum, database)){
                     System.out.println("Transfer successful");
                 }
                 else {
