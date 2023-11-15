@@ -2,9 +2,14 @@ package instapay.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UserDatabase {
     private ArrayList<User> users_array_list = new ArrayList<>();
+
+    public ArrayList<User> getUsers_array_list() {
+        return users_array_list;
+    }
     /*
     Hashmap for users' username and password
     this hashmap will be filled from  users_authentications.txt file
@@ -37,7 +42,7 @@ public class UserDatabase {
     /* Description:
      *   find if this username already exists and return true if it does.
      *   used when user in creating a new username.
-    */
+     */
     public boolean searchUsername(String username){
         // for using files
 //        return users_list.containsKey(username);
@@ -86,6 +91,12 @@ public class UserDatabase {
         return false;
     }
 
-
+    public boolean validateUser(String username, String password){
+        for (User user:users_array_list) {
+            if (Objects.equals(user.getUsername(), username) && Objects.equals(user.getPassword(), password))
+                return true;
+        }
+        return false;
+    }
 
 }

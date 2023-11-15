@@ -12,6 +12,11 @@ public class BankAccount extends InstapayAccount {
         super(phoneNumber, handle);
     }
 
+    @Override
+    public double inquireBalance(String credentials) {
+        return 10000;
+    }
+
     public double inquireBalance(){
         System.out.println("Enter your serial number: ");
         String serial = input.nextLine();

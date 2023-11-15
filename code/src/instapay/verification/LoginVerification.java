@@ -6,13 +6,20 @@ import java.util.Scanner;
 
 public class LoginVerification {
 
-    public boolean confirmUsername(UserDatabase database){
+    public boolean confirmCredentials(UserDatabase database){
         while (true){
-            String username;
-            System.out.println("please enter user name\n");
             Scanner input = new Scanner(System.in);
-            username = input.nextLine();
+            System.out.println("please enter your username: ");
+            String username = input.nextLine();
+            System.out.println("please enter your password: ");
+            String password = input.nextLine();
 
+            if (database.validateUser(username,password)){
+                return true;
+            }else {
+                System.out.println("Username and Password don't match");
+            }
         }
+
     }
 }

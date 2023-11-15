@@ -11,7 +11,23 @@ public  class User {
     protected InstapayAccount account;
     protected UserTransaction userTransact;
 
-    public User(String mobileNumber, String username, String password, String instapay_handle ,InstapayAccount account) {
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public String getInstaPayHandle() {
+        return instaPayHandle;
+    }
+
+    public InstapayAccount getAccount() {
+        return account;
+    }
+
+    public UserTransaction getUserTransact() {
+        return userTransact;
+    }
+
+    public User(String mobileNumber, String username, String password, String instapay_handle , InstapayAccount account) {
         this.account = account;
         this.mobileNumber = mobileNumber;
         this.username = username;

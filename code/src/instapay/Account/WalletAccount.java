@@ -1,8 +1,5 @@
 package instapay.Account;
-<<<<<<< HEAD
-=======
-
->>>>>>> d9399b16b1e8d06e3fc151190898e2bc64785fb9
+import instapay.wallet.WalletProvider;
 
 public class WalletAccount extends InstapayAccount {
     private WalletProvider walletProvider;
@@ -11,8 +8,8 @@ public class WalletAccount extends InstapayAccount {
         super( phoneNumber, handle);
     }
 
-    public double inquireBalance(){
-        return walletProvider.getBalance();
+    public double inquireBalance(String credentials){
+        return walletProvider.getBalance(credentials);
     }
 
     public void transferMoney(){
