@@ -48,20 +48,17 @@ public class ProgramInterface {
         UserVerification verification = new UserVerification();
         //the process of verifying each user attribute
         username = verification.confirmUsername(database);
+
         password = verification.confirmPassword();
 
-        instapayHandle = verification.confirmHandle(database);
 
-        InstapayAccount account = verification.makeUserType();
+        instapayHandle = verification.confirmHandle(database);
 
         phone_number = verification.confirmPhone(database);
         verification.verifyOTP(phone_number);
 
-        account.setPhoneNumber(phone_number);
-        User user = new User(phone_number, username, password, instapayHandle, account);
+        User user = verification.makeUserType();
 
-        System.out.println("Account Created Successfully!");
-        System.out.println("this is your new instapay handle: "+instapayHandle+"@instapay\n");
         activeUser = user;
         database.addUser(user);
     }
@@ -149,7 +146,7 @@ public class ProgramInterface {
 
     public void bankAccountTransferMenu(){
         Scanner transferType = new Scanner(System.in);
-        System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet");
+        System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet:");
         int choice = transferType.nextInt();
         switch (choice){
             case 1:

@@ -17,8 +17,8 @@ public class BankAccount extends InstapayAccount {
     private String accountNumber;
     private Scanner input = new Scanner(System.in);
 
-    public BankAccount( String handle,String serial ,Bank bank) {
-        super( handle);
+    public BankAccount(String phoneNumber, String handle,String serial ,Bank bank) {
+        super(phoneNumber, handle);
         this.bank = bank;
         this.accountNumber = serial;
     }

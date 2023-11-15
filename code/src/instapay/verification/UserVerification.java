@@ -108,7 +108,7 @@ public class UserVerification {
         return true;
     }
 
-    public InstapayAccount makeUserType() {
+    public User makeUserType() {
         User user = null;
         InstapayAccount account = null;
         System.out.println("1.add a bank\n2.add a wallet");
@@ -144,7 +144,7 @@ public class UserVerification {
                     serial = input.nextLine();
                 }
 
-                account = new BankAccount(instapayHandle, serial, bank);
+                account = new BankAccount(phoneNumber,instapayHandle, serial, bank);
             }
             // bank account verification
             // check with api
@@ -168,21 +168,18 @@ public class UserVerification {
                         System.out.println("Invalid wallet provider");
                     }
                 }
-                while (!wallet.verifyPhoneNumber(phoneNumber)) {
-                    System.out.println("this phone number doesn't have a wallet");
-                    System.out.println("enter phone number");
-                    phoneNumber = input.nextLine();
-                }
-                System.out.println("This phone number will receive an OTP");
-                //send OTP
-                this.verifyOTP(phoneNumber);
-                account = new WalletAccount( instapayHandle, wallet);
+
+                account = new WalletAccount(phoneNumber, instapayHandle, wallet);
                 break;
             }
             // Ewallet verification
             //check with api
         }
-        return account;
+        user = new User(phoneNumber, username, password, instapayHandle, account);
+
+        System.out.println("Account Created Successfully!");
+        System.out.println("this is your new instapay handle: "+instapayHandle+"@instapay\n");
+        return user;
 
     }
 }

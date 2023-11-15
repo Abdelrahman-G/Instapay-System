@@ -13,7 +13,8 @@ public abstract class InstapayAccount {
 
     protected String phoneNumber;
     protected String handle;
-    public InstapayAccount(String handle){
+    public InstapayAccount(String phoneNumber,String handle){
+        this.phoneNumber = phoneNumber;
         this.handle = handle;
     }
 
