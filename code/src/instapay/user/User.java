@@ -1,18 +1,14 @@
 package instapay.user;
 
+import instapay.Account.InstapayAccount;
 import instapay.transaction.UserTransaction;
-import instapay.account.Account;
-
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public  class User {
     protected String mobileNumber;
     protected String username;
     protected String password;
     protected String instaPayHandle;
-    protected Account account;
+    protected InstapayAccount account;
     protected UserTransaction userTransact;
 
     public User(String mobileNumber, String username, String password, String instapay_handle) {

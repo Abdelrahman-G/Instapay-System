@@ -1,7 +1,13 @@
 package instapay.Bank;
 
 public class AlexBank extends Bank{
-    public boolean verifySerial(){
+    @Override
+    public Boolean verifySerial(String serial) {
         return true;
+    }
+
+    @Override
+    public Double getUserBalance(String serial) {
+        return 100000.0;
     }
 }

@@ -1,12 +1,10 @@
-import instapay.verification.Facade;
+import instapay.verification.ProgramInterface;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Facade authentication = new Facade();
-        authentication.createUser();
+        ProgramInterface programInterface = new ProgramInterface();
+        programInterface.register();
     }
-
-
 }

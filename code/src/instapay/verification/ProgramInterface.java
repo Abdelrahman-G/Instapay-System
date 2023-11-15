@@ -1,48 +1,47 @@
 package instapay.verification;
 
 import instapay.user.User;
-import instapay.user.UsersDatabase;
+import instapay.user.UserDatabase;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Facade {
-    UsersDatabase database = new UsersDatabase();
+public class ProgramInterface {
+    UserDatabase database = new UserDatabase();
 
     public Map.Entry<Integer,UserVerification> accountChoice() {
         Scanner input = new Scanner(System.in);
-        System.out.println("1.Add Bank Account\n2.Add EWallet");
+        System.out.println("1.Add Bank instapay.Account\n2.Add EWallet");
         int choice = input.nextInt();
 
 
         while (choice != 1 && choice != 2) {
             System.out.println("Invalid Choice!!");
-            System.out.println("1.Add Bank Account\n2.Add EWallet");
+            System.out.println("1.Add Bank instapay.Account\n2.Add EWallet");
             choice = input.nextInt();
 
         }
         UserVerification verification = null;
+        Map.Entry<Integer, UserVerification> entry = null;
         switch (choice) {
             case 1 -> {
                 verification = new BankUserVerification();
-                Map.Entry<Integer, UserVerification> entry = Map.entry(choice, verification);
-                return entry;
+                entry = Map.entry(choice, verification);
             }
             case 2 -> {
                 verification = new EWalletUserVerification();
-                Map.Entry<Integer, UserVerification> entry = Map.entry(choice, verification);
-                return entry;
+                entry = Map.entry(choice, verification);
             }
         }
-        return null;
+        return entry;
     }
 
-    public void createUser() throws IOException {
+    public void register() throws IOException {
 
         String username, password, phone_number, email, instapayHandle;
-        Facade authService = new Facade();
-        Map.Entry<Integer,UserVerification> entry = authService.accountChoice();
+        ProgramInterface programInterface = new ProgramInterface();
+        Map.Entry<Integer,UserVerification> entry = programInterface.accountChoice();
         UserVerification verification = entry.getValue();
         int choice = entry.getKey();
 
@@ -54,7 +53,6 @@ public class Facade {
         instapayHandle = verification.confirmHandle(database);
         User user = verification.makeUserType(choice);
         database.addUser(user);
-        user.printUser();
     }
 
     public void login() {

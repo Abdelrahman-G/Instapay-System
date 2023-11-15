@@ -1,14 +1,9 @@
 package instapay.user;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
-public class UsersDatabase {
+public class UserDatabase {
     private ArrayList<User> users_array_list = new ArrayList<>();
     /*
     Hashmap for users' username and password

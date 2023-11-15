@@ -1,4 +1,4 @@
-package Account;
+package instapay.Account;
 
 public class WalletAccount extends InstapayAccount {
     private WalletProvider walletProvider;
