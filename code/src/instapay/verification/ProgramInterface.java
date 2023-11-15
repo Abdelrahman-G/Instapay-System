@@ -1,5 +1,6 @@
 package instapay.verification;
 
+import instapay.Account.InstapayAccount;
 import instapay.bill.Bill;
 import instapay.bill.ElectricityBill;
 import instapay.bill.GasBill;
@@ -17,10 +18,24 @@ public class ProgramInterface {
 
 
 
-    public void initiateProg() throws IOException {
-        while (true){
-            this.register();
-            this.login();
+    public void programRun() throws IOException {
+        System.out.println("\t\tWelcome to instapay\n");
+        Scanner input = new Scanner(System.in);
+
+        int choice;
+        while(true) {
+            System.out.println("enter 1 for login\nenter 2 for register");
+            choice = input.nextInt();
+            if (choice==1 || choice==2)
+                break;
+            else
+                System.out.println("Wrong choice choice");
+        }
+        switch (choice) {
+            case 1 -> this.login();
+            case 2 -> this.register();
+        }
+        while(true) {
             this.chooseOperation();
         }
     }
@@ -34,10 +49,19 @@ public class ProgramInterface {
         //the process of verifying each user attribute
         username = verification.confirmUsername(database);
         password = verification.confirmPassword();
+
+        instapayHandle = verification.confirmHandle(database);
+
+        InstapayAccount account = verification.makeUserType();
+
         phone_number = verification.confirmPhone(database);
         verification.verifyOTP(phone_number);
-        instapayHandle = verification.confirmHandle(database);
-        User user = verification.makeUserType();
+
+        account.setPhoneNumber(phone_number);
+        User user = new User(phone_number, username, password, instapayHandle, account);
+
+        System.out.println("Account Created Successfully!");
+        System.out.println("this is your new instapay handle: "+instapayHandle+"@instapay\n");
         activeUser = user;
         database.addUser(user);
     }
@@ -65,24 +89,21 @@ public class ProgramInterface {
     private void chooseOperation(){
         Scanner input = new Scanner(System.in);
         while(true) {
-            System.out.println("1.Transfer money\n2.Inquire balance\n3.bill payment");
+            System.out.println("1.Transfer money\n2.Inquire balance\n3.bill payment\n4.Exit");
             int choice = input.nextInt();
 
-            switch (choice){
-                case 1:
-                    if (Objects.equals(activeUser.getAccountType(), "Bank")){
+            switch (choice) {
+                case 1 -> {
+                    if (Objects.equals(activeUser.getAccountType(), "Bank")) {
                         bankAccountTransferMenu();
-                    }
-                    else if(activeUser.getAccountType() == "Wallet"){
+                    } else if (activeUser.getAccountType() == "Wallet") {
                         walletTransferMenu();
                     }
-                    break;
-                case 2:
-                    System.out.println("Your balance is: " + activeUser.inquireBalance());
-                    break;
-                case 3:
-                    billMenu();
-                    break;
+                }
+                case 2 -> System.out.println("Your balance is: " + activeUser.inquireBalance());
+                case 3 -> billMenu();
+                case 4 -> System.exit(0);
+                default -> System.out.println("Invalid choice");
             }
         }
     }
@@ -128,7 +149,7 @@ public class ProgramInterface {
 
     public void bankAccountTransferMenu(){
         Scanner transferType = new Scanner(System.in);
-        System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet:");
+        System.out.println("1.Transfer to instapay account\n2.Transfer to bank account\n3.Transfer to Wallet");
         int choice = transferType.nextInt();
         switch (choice){
             case 1:

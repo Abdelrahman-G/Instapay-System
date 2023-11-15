@@ -5,8 +5,8 @@ import instapay.user.UserDatabase;
 public class WalletAccount extends InstapayAccount {
     private WalletProvider walletProvider;
 
-    public WalletAccount(String phoneNumber, String handle, WalletProvider walletProvider) {
-        super( phoneNumber, handle);
+    public WalletAccount( String handle, WalletProvider walletProvider) {
+        super( handle);
         this.walletProvider = walletProvider;
     }
 

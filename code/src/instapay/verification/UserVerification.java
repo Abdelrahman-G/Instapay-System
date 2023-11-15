@@ -76,8 +76,7 @@ public class UserVerification {
     public String confirmHandle(UserDatabase database) {
         while (true) {
             System.out.println("please enter your new InstaPay Handle");
-            System.out.println("your account will end with @instapay and start with this handle (example: john123@instapay)\n");
-            input.nextLine();
+            System.out.println("your account will end with @instapay and start with this handle (example: john123@instapay)");
             instapayHandle = input.nextLine();
             if (database.searchHandle(instapayHandle)) {
                 System.out.println("This username is already taken :(");
@@ -109,7 +108,7 @@ public class UserVerification {
         return true;
     }
 
-    public User makeUserType() {
+    public InstapayAccount makeUserType() {
         User user = null;
         InstapayAccount account = null;
         System.out.println("1.add a bank\n2.add a wallet");
@@ -144,7 +143,8 @@ public class UserVerification {
                     System.out.println("Enter Bank Account Number: ");
                     serial = input.nextLine();
                 }
-                account = new BankAccount(phoneNumber, instapayHandle, serial, bank);
+
+                account = new BankAccount(instapayHandle, serial, bank);
             }
             // bank account verification
             // check with api
@@ -176,16 +176,13 @@ public class UserVerification {
                 System.out.println("This phone number will receive an OTP");
                 //send OTP
                 this.verifyOTP(phoneNumber);
-                account = new WalletAccount(phoneNumber, instapayHandle, wallet);
+                account = new WalletAccount( instapayHandle, wallet);
                 break;
             }
             // Ewallet verification
             //check with api
         }
-        user = new User(phoneNumber, username, password, instapayHandle, account);
-        System.out.println("Account Created Successfully!");
-        System.out.println("this is your new instapay handle: "+instapayHandle+"@instapay\n");
-        return user;
+        return account;
 
     }
 }

@@ -17,8 +17,8 @@ public class BankAccount extends InstapayAccount {
     private String accountNumber;
     private Scanner input = new Scanner(System.in);
 
-    public BankAccount(String phoneNumber, String handle,String serial ,Bank bank) {
-        super(phoneNumber, handle);
+    public BankAccount( String handle,String serial ,Bank bank) {
+        super( handle);
         this.bank = bank;
         this.accountNumber = serial;
     }
@@ -43,7 +43,7 @@ public class BankAccount extends InstapayAccount {
 
 
     public boolean deductMoney(double amount) {
-        return this.bank.deductBalance(this.phoneNumber,amount);
+        return this.bank.deductBalance(this.accountNumber,amount);
     }
 
     @Override

@@ -9,10 +9,11 @@ import instapay.wallet.*;
 
 
 public abstract class InstapayAccount {
+
+
     protected String phoneNumber;
     protected String handle;
-    public InstapayAccount(String phoneNumber,String handle){
-        this.phoneNumber = phoneNumber;
+    public InstapayAccount(String handle){
         this.handle = handle;
     }
 
@@ -21,6 +22,13 @@ public abstract class InstapayAccount {
     public abstract boolean payBill(double money);
 
     public abstract String getCredentials();
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public boolean transferToInstapay(String instapayHandle, double amount, UserDatabase database){
         ArrayList<User> users = database.getUsers_array_list();

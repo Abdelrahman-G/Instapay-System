@@ -17,9 +17,6 @@ public abstract class WalletProvider {
         return;
     }
 
-    public boolean transferToWallet(String phoneNum, double amount) {
-        return true;
-    }
 
     public boolean walletExists(String phoneNum) {
         return true;
