@@ -4,9 +4,12 @@ import instapay.user.User;
 import instapay.user.UserDatabase;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class ProgramInterface {
-    UserDatabase database = new UserDatabase();
+    private UserDatabase database = new UserDatabase();
+    private User activeUser = null;
+
 
     public void initiateProg() throws IOException {
         while (true){
@@ -28,11 +31,45 @@ public class ProgramInterface {
         verification.verifyOTP(phone_number);
         instapayHandle = verification.confirmHandle(database);
         User user = verification.makeUserType();
+        activeUser = user;
         database.addUser(user);
     }
 
     private void login() {
         LoginVerification loginVerification = new LoginVerification();
-        loginVerification.confirmCredentials(database);
+        System.out.println();
+        while (true){
+            Scanner input = new Scanner(System.in);
+            System.out.println("please enter your username: ");
+            String username = input.nextLine();
+            System.out.println("please enter your password: ");
+            String password = input.nextLine();
+            if (loginVerification.confirmCredentials(database, username, password)){
+                System.out.println("Log in successful");
+                break;
+            }
+            else {
+                System.out.println("Username and password don't match\ntry again");
+            }
+
+        }
     }
+
+
+
+    private void chooseOperation(){
+        Scanner input = new Scanner(System.in);
+        while(true) {
+            System.out.println("1.Transfer money\n2.Inquire balance\n3.bill payment");
+            int choice = input.nextInt();
+            switch (choice){
+                case 1:
+                    activeUser.transferMoney();
+            }
+        }
+
+
+    }
+
+
 }

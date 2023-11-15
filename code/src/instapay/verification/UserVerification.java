@@ -183,8 +183,8 @@ public class UserVerification {
             //check with api
         }
         user = new User(phoneNumber, username, password, instapayHandle, account);
-        System.out.println("Account Created Successfully!\n");
-
+        System.out.println("Account Created Successfully!");
+        System.out.println("this is your new instapay handle: "+instapayHandle+"@instapay\n");
         return user;
 
     }

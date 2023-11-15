@@ -2,6 +2,7 @@ package instapay.Account;
 
 import instapay.Bank.Bank;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class BankAccount extends InstapayAccount {
@@ -14,14 +15,12 @@ public class BankAccount extends InstapayAccount {
 
     @Override
     public double inquireBalance(String credentials) {
-        return 10000;
+        int min = 100000, max = 999999;
+        Random random = new Random();
+        double balance = random.nextDouble(max - 100000) - min;
+        return balance;
     }
 
-    public double inquireBalance(){
-        System.out.println("Enter your serial number: ");
-        String serial = input.nextLine();
-        return bank.getUserBalance(serial);
-    }
 
     public void transferMoney(){
         System.out.println("Enter the amount to be transferred: ");
