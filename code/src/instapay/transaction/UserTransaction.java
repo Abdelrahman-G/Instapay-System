@@ -1,6 +1,6 @@
 package instapay.transaction;
+import instapay.Account.*;
 
 public abstract class UserTransaction {
-    protected String identifier;
-    public abstract void transferMoney(double amount);
+    public abstract void transferMoney(InstapayAccount sender,InstapayAccount receiver,double amount);
 }

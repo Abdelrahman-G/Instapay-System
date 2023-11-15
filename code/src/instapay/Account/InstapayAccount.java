@@ -3,6 +3,7 @@ import instapay.user.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import instapay.transaction.*;
 
 public abstract class InstapayAccount {
     protected String phoneNumber;
@@ -14,10 +15,13 @@ public abstract class InstapayAccount {
     }
 
     public abstract double inquireBalance(String credentials);
-    public abstract void transferMoney();
     public abstract void payBill();
-    public boolean tansferToInstapay(String instapayHandle, double amount){
 
+    public abstract boolean transferMoney();
+
+    public boolean tansferToInstapay(String instapayHandle, double amount){
+        UserTransaction transaction = new InstapayTransaction();
+        transaction.operate(sender,reciever,amount);
         ArrayList<User> users = database.getUsers_array_list();
         User transferedTo = null;
         for (User user:users) {
@@ -29,9 +33,12 @@ public abstract class InstapayAccount {
         if (transferedTo==null)
             return false;
 
-        if (inquireBalance())
+        if ()
 
 
+
+    }
+    public boolean transferToWallet(String phoneNum,double amount){
 
     }
 }

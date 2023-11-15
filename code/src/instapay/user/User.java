@@ -3,6 +3,7 @@ package instapay.user;
 import instapay.Account.InstapayAccount;
 import instapay.transaction.UserTransaction;
 
+
 public  class User {
     protected String mobileNumber;
     protected String username;
@@ -54,8 +55,8 @@ public  class User {
         System.out.println(this.username+" "+this.password+" "+this.mobileNumber+" "+this.instaPayHandle +"@instapay\n");
     }
 
-    public void transferMoney(){
-        this.account.transferMoney();
+    public boolean transferMoney(int transactionType){
+        return this.account.transferMoney();
     }
 
     public void payBill(){
