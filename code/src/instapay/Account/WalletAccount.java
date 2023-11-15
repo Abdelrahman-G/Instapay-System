@@ -1,11 +1,6 @@
 package instapay.Account;
-import instapay.user.User;
 import instapay.wallet.WalletProvider;
 import instapay.user.UserDatabase;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
 
 public class WalletAccount extends InstapayAccount {
     private WalletProvider walletProvider;
@@ -20,7 +15,7 @@ public class WalletAccount extends InstapayAccount {
     }
 
     public void addMoney(double amount) {
-        this.walletProvider.addBalance(amount, this.phoneNumber);
+        this.walletProvider.releaseMoney(amount, this.phoneNumber);
     }
 
     public boolean deductMoney(double amount) {
@@ -36,8 +31,8 @@ public class WalletAccount extends InstapayAccount {
         };
     }
 
-    public void payBill(){
-
+    public boolean payBill(double money){
+        return deductMoney(money);
     }
 
     public String getAccountType(){

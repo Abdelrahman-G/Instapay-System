@@ -1,8 +1,10 @@
 package instapay.bill;
 
-public class Electricity extends Bill{
+public class GasBill extends Bill{
 
+    @Override
     public boolean verifyPaymentCode() {
         return true;
     }
+
 }

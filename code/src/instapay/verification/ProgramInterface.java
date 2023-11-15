@@ -1,5 +1,9 @@
 package instapay.verification;
 
+import instapay.bill.Bill;
+import instapay.bill.ElectricityBill;
+import instapay.bill.GasBill;
+import instapay.bill.WaterBill;
 import instapay.user.User;
 import instapay.user.UserDatabase;
 
@@ -76,8 +80,50 @@ public class ProgramInterface {
                 case 2:
                     System.out.println("Your balance is: " + activeUser.inquireBalance());
                     break;
+                case 3:
+                    billMenu();
+                    break;
             }
         }
+    }
+
+    public void billMenu(){
+        Bill bill = null;
+        int choice;
+        Scanner input = new Scanner(System.in);
+        while (true) {
+            System.out.println("1.Gas\n2.Electricity\n3.Water");
+            choice = input.nextInt();
+            if (choice >= 1 && choice <= 3)
+                break;
+            else
+                System.out.println("Invalid choice");
+        }
+        input.nextLine();
+        String paymentCode;
+        switch (choice){
+            case 1:
+                bill = new GasBill();
+                break;
+            case 2:
+                bill = new ElectricityBill();
+                break;
+            case 3:
+                bill = new WaterBill();
+        }
+        while (true){
+            System.out.println("Enter e-payment code");
+            paymentCode = input.nextLine();
+            if(!bill.verifyPaymentCode())
+                System.out.println("This e-payment code doesn't exist");
+            else
+                break;
+        }
+        System.out.println("Your bill: "+bill.getBillPrice());
+        if (activeUser.payBill(bill.getBillPrice()))
+            System.out.println("Bill is paid successfully!!");
+        else
+            System.out.println("Something went wrong with you bill payment");
     }
 
     public void bankAccountTransferMenu(){
@@ -125,7 +171,7 @@ public class ProgramInterface {
                 }
                 else {
                     System.out.println("Transfer failed");
-                };
+                }
                 break;
 
         }

@@ -1,6 +1,6 @@
 package instapay.bill;
 
-public class Water extends Bill{
+public class WaterBill extends Bill{
     public boolean verifyPaymentCode() {
         return true;
     }

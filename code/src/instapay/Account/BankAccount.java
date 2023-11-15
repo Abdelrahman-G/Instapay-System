@@ -56,8 +56,8 @@ public class BankAccount extends InstapayAccount {
         };
     }
 
-    public void payBill(){
-
+    public boolean payBill(double money){
+        return deductMoney(money);
     }
 
     public boolean transferToBankAccount(String accountNumber, double amount, String bankName) {

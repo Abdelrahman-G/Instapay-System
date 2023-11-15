@@ -11,7 +11,7 @@ public abstract class Bill {
     public double getBillPrice(){
         int min = 100, max = 1000;
         Random random = new Random();
-        return random.nextDouble(max - 100) - min;
+        return random.nextDouble(max - 100) + min;
     }
 
 

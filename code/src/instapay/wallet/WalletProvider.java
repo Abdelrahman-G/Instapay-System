@@ -13,7 +13,7 @@ public abstract class WalletProvider {
         return true;
     }
 
-    public void addBalance(double amount,String phoneNum) {
+    public void releaseMoney(double amount, String phoneNum) {
         return;
     }
 

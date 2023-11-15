@@ -18,7 +18,7 @@ public abstract class InstapayAccount {
 
     /*return random balance value until real API is implemented*/
     public abstract double inquireBalance(String credentials);
-    public abstract void payBill();
+    public abstract boolean payBill(double money);
 
     public abstract String getCredentials();
 
@@ -74,7 +74,7 @@ public abstract class InstapayAccount {
         if(!walletProvider.walletExists(phoneNum)){
             return false;
         }
-        walletProvider.addBalance(amount,phoneNum);
+        walletProvider.releaseMoney(amount,phoneNum);
         return true;
     }
 

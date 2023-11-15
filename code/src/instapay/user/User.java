@@ -51,8 +51,8 @@ public  class User {
     }
 
 
-    public void payBill(){
-        this.account.payBill();
+    public boolean payBill(double money){
+        return this.account.payBill(money);
     }
 
     public String getAccountType(){
